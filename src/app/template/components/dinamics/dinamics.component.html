@@ -14,8 +14,8 @@
         <label class="col-sm-3 col-form-label">Add</label>
         <div class="col-sm-9">
             <div class="input-group mb-3">
-                <input class="form-control" placeholder="Add favorite game">
-                <button class="btn btn-outline-primary" type="button">Add</button>
+                <input class="form-control" [(ngModel)]="newGame" name="newGame" (keyup.enter)="addGame()" placeholder="Add favorite game">
+                <button class="btn btn-outline-primary" type="button" (click)="addGame()">Add</button>
             </div>
 
 
@@ -25,7 +25,10 @@
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Favorites</label>
         <div class="col-sm-9">
-            <input class="form-control mb-1" required name="favorite_{{ i }}" [(ngModel)]="item.name" *ngFor="let item of person.favorites; let i = index">
+            <div class="input-group mb-1" *ngFor="let item of person.favorites; let i = index">
+                <input class="form-control" required name="favorite_{{ i }}" [(ngModel)]="item.name">
+                <button class="btn btn-outline-danger" (click)="erase(i)" type="button">Erase</button>
+            </div>
 
         </div>
     </div>

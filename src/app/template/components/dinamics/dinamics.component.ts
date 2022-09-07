@@ -25,7 +25,22 @@ export class DinamicsComponent {
     ],
   };
 
+  newGame: string = '';
+
+  addGame() {
+    const newFavorite: Favorite = {
+      id: this.person.favorites.length + 1,
+      name: this.newGame,
+    };
+    this.person.favorites.push({ ...newFavorite });
+    this.newGame = '';
+  }
+
   save() {
     console.log('form saved');
+  }
+
+  erase(index: number) {
+    this.person.favorites.splice(index);
   }
 }
