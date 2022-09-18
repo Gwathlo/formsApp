@@ -3,12 +3,12 @@
 
 <div class="row">
     <div class="col">
-        <form autocomplete="off">
+        <form autocomplete="off" [formGroup]="myForm">
 
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Product</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" placeholder="Name of the product" autocomplete="off">
+                    <input type="text" class="form-control" formControlName="name" placeholder="Name of the product" autocomplete="off">
                     <span class="form-text text-danger">Must be 3 letters</span>
                 </div>
             </div>
@@ -40,7 +40,7 @@
 
     </div>
 </div>
-<!-- 
+
 <div class="row">
     <div class="col">
 
@@ -56,8 +56,5 @@
         <span>Value</span>
         <pre>{{ myForm.value | json}}</pre>
 
-        <span>CustomDirective</span>
-        <pre>{{ myForm.controls.stocks?.errors| json}}</pre>
-
     </div>
-</div> -->
+</div>
