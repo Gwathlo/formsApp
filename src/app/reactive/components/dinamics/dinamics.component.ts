@@ -1,5 +1,12 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-dinamics',
@@ -14,6 +21,8 @@ export class DinamicsComponent {
       Validators.required
     ),
   });
+
+  newFavorite: FormControl = this.fb.control('', Validators.required);
 
   get favoritesArr() {
     return this.myForm.get('favorites') as FormArray;
@@ -35,5 +44,17 @@ export class DinamicsComponent {
     return (
       this.myForm.controls[field].errors && this.myForm.controls[field].touched
     );
+  }
+
+  addFavorite() {
+    if (this.newFavorite.invalid) {
+      return;
+    }
+
+    this.favoritesArr.push(
+      this.fb.control(this.newFavorite.value, Validators.required)
+    );
+
+    this.newFavorite.reset();
   }
 }
