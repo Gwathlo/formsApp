@@ -57,4 +57,8 @@ export class DinamicsComponent {
 
     this.newFavorite.reset();
   }
+
+  eraseFavorite(index: number) {
+    this.favoritesArr.removeAt(index);
+  }
 }

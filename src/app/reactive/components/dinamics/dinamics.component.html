@@ -27,7 +27,7 @@
         <div class="col-sm-9" formArrayName="favorites">
             <div class="input-group mb-1" *ngFor="let favorite of favoritesArr.controls; let i = index">
                 <input class="form-control" [formControlName]="i">
-                <button class="btn btn-outline-danger" type="button">Erase</button>
+                <button class="btn btn-outline-danger" (click)="eraseFavorite(i)" type="button">Erase</button>
             </div>
 
         </div>
