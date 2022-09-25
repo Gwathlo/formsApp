@@ -24,11 +24,11 @@
 
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Favorites</label>
-        <div class="col-sm-9">
-            <!-- <div class="input-group mb-1" *ngFor="let item of person.favorites; let i = index">
-                <input class="form-control" required name="favorite_{{ i }}" [(ngModel)]="item.name">
-                <button class="btn btn-outline-danger" (click)="erase(i)" type="button">Erase</button>
-            </div> -->
+        <div class="col-sm-9" formArrayName="favorites">
+            <div class="input-group mb-1" *ngFor="let favorite of favoritesArr.controls; let i = index">
+                <input class="form-control" [formControlName]="i">
+                <button class="btn btn-outline-danger" type="button">Erase</button>
+            </div>
 
         </div>
     </div>
@@ -42,6 +42,13 @@
     </div>
 
 </form>
+
+<span>Valid</span>
+<pre>{{ myForm.valid }}</pre>
+<br>
+
+<span>Value</span>
+<pre>{{ myForm.value | json }}</pre>
 
 <!-- <span>Person</span>
 <pre>{{ person | json }}</pre> -->
